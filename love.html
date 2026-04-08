@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Card */
+.card {
+  background: rgba(255, 192, 203, 0.95);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: fadeIn 2s ease;
+}
+
+/* Typing text */
+#typing {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Paragraph */
+p {
+  color: white;
+  font-size: 14px;
+}
+
+/* Question */
+h3 {
+  color: white;
+}
+
+/* Buttons */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.yes {
+  background: red;
+  color: white;
+}
+
+.no {
+  background: black;
+  color: white;
+  position: relative;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  color: red;
+  font-size: 20px;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1 id="typing"></h1>
+
+  <p>
+    Deep di gagan 💕<br>
+    Gagan da deep ✨<br><br>
+    I have one important question...
+  </p>
+
+  <h3>Will you be my Husband? ❤️</h3>
+
+  <button class="yes" onclick="yesClick()">Yes ❤️</button>
+  <button class="no" onmouseover="moveButton()">No 💔</button>
+</div>
+
+<script>
+/* Word-by-word typing */
+let words = ["Hello", "my", "love 💖"];
+let i = 0;
+
+function typeWords() {
+  if (i < words.length) {
+    document.getElementById("typing").innerHTML += words[i] + " ";
+    i++;
+    setTimeout(typeWords, 500);
+  }
+}
+
+typeWords();
+
+/* Yes button */
+function yesClick() {
+  alert("Yayyyy 😍 I love you so much ❤️ Ajo rishta leke phir");
+}
+
+/* No button runs away */
+function moveButton() {
+  let btn = document.querySelector(".no");
+  let x = Math.random() * 200 - 100;
+  let y = Math.random() * 200 - 100;
+  btn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+/* Floating hearts */
+function createHeart() {
+  let heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
